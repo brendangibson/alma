@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "email": {
+      "type": "string",
+      "minLength": 1
+    },
+    "linkedIn": {
+      "type": "string",
+      "minLength": 1
+    },
+
+    "visas": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["O-1", "EB-1A", "EB-2 NIW", "I don't know"]
+      }
+    },
+    "message": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": ["name"]
+}
