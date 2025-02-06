@@ -1,50 +1,33 @@
+// Content section that contains the table that lists all the leads
+
 "use client";
 
-import Image from "next/image";
 import styled from "styled-components";
 import LeadsFilters from "./leadsfilters";
 import LeadsTable from "./leadstable";
+import { Leads } from "@/app/api/leads/route";
+import { add } from "../../../src/lib/leadsSlice";
+import { useDispatch } from "react-redux";
 
-export default function LeadsTableSection({ leads }) {
+type Props = {
+  leads: Leads;
+};
+
+export default function LeadsTableSection({ leads }: Props) {
+  const dispatch = useDispatch();
+
+  dispatch(add(leads));
   return (
-    <>
+    <Wrapper>
       <h2>Leads</h2>
       <LeadsFilters />
-      <LeadsTable leads={leads} />
-    </>
+      <LeadsTable />
+    </Wrapper>
   );
 }
 
-const Nav = styled.nav`
-  position: relative;
-  height: 100vh;
-  width: 15vw;
-  background: #91925f00;
-  background: linear-gradient(315deg, #91925f00, #e2db56);
-  border-right: 1px solid #ccc;
-`;
-
-const Logo = styled(Image)`
-  position: absolute;
-  top: 20%;
-  left: 20%;
-`;
-
-const User = styled.div`
-  position: absolute;
-  bottom: 5%;
-  left: 5%;
+const Wrapper = styled.nav`
   display: flex;
-  align-items: center;
-  gap: 10px;
-`;
-
-const Initials = styled.div`
-  border-radius: 50%;
-  background: #ccc;
-  height: 20px;
-  width: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: var(--spacing-04);
+  flex-direction: column;
 `;

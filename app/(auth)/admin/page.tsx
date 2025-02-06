@@ -1,12 +1,17 @@
 import AdminPage from "@/components/ui/admin/adminpage";
 
+const url =
+  (process.env.URL ? process.env.URL : "https://" + process.env.VERCEL_URL) +
+  "/api/leads";
+
 export default async function () {
   let leads = [];
   try {
-    let data = await fetch("https://" + process.env.VERCEL_URL + "/api/leads");
+    let data = await fetch(url);
     leads = await data.json();
   } catch (e) {
-    console.error("Error fetching leads: ", e);
+    console.error(`Error fetching leads from ${url}: ${e}`);
   }
+
   return <AdminPage leads={leads} />;
 }
