@@ -1,12 +1,14 @@
+import styled from "styled-components";
+
 export default function LeadsTable({ leads }) {
   return (
-    <table>
+    <Table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Submitted</th>
-          <th>Status</th>
-          <th>Country</th>
+          <th>Name↓</th>
+          <th>Submitted↓</th>
+          <th>Status↓</th>
+          <th>Country↓</th>
         </tr>
       </thead>
       <tbody>
@@ -19,6 +21,11 @@ export default function LeadsTable({ leads }) {
           </tr>
         ))}
       </tbody>
-    </table>
+    </Table>
   );
 }
+
+const Table = styled.table`
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-grey);
+`;
