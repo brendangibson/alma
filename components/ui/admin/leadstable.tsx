@@ -64,6 +64,7 @@ const TH = styled.th`
 
 const TD = styled.td`
   padding: var(--spacing-03);
+  border-bottom: 1px solid var(--color-grey);
 `;
 
 export default LeadsTable;

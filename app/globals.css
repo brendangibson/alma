@@ -1,25 +1,31 @@
 body,
 th,
-td {
+td,
+li,
+p,
+div {
   font-family: Verdana, Arial, Helvetica, sans-serif;
   font-weight: 400;
 }
 
-@layer base {
-  :root {
-    --spacing-01: 0.125rem;
-    --spacing-02: 0.25rem;
-    --spacing-03: 0.5rem;
-    --spacing-04: 0.75rem;
-    --spacing-05: 1rem;
-    --spacing-06: 1.25rem;
-    --spacing-07: 1.5rem;
+body {
+  margin: 0;
+}
 
-    --content-width: 50vw;
+:root {
+  --spacing-01: 0.125rem;
+  --spacing-02: 0.25rem;
+  --spacing-03: 0.5rem;
+  --spacing-04: 0.75rem;
+  --spacing-05: 1rem;
+  --spacing-06: 1.25rem;
+  --spacing-07: 1.5rem;
 
-    --color-white: #ffffff;
-    --color-light-green: #d9dea6;
-    --color-grey: #cccccc;
-    --color-black: #000000;
-  }
+  --content-width: 50vw;
+
+  --color-white: #ffffff;
+  --color-yellow: #e2db56;
+  --color-light-green: #d9dea6;
+  --color-grey: #cccccc;
+  --color-black: #000000;
 }
