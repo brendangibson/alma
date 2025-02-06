@@ -10,6 +10,7 @@ export default async function () {
   let leads = [];
   try {
     let data = await fetch(url);
+    console.error("data: ", data);
     leads = await data.json();
   } catch (e) {
     console.error(`Error fetching leads from ${url}: ${e}`);
