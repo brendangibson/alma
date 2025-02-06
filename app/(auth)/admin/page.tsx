@@ -1,5 +1,7 @@
 import AdminPage from "@/components/ui/admin/adminpage";
 
+export const dynamic = "force-dynamic";
+
 const url =
   (process.env.URL ? process.env.URL : "https://" + process.env.VERCEL_URL) +
   "/api/leads";
