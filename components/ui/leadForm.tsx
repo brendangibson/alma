@@ -49,7 +49,7 @@ export default function LeadForm() {
 
   const handleChange = (data: object) => {
     setValidationMode("ValidateAndShow");
-    setData(data);
+    // setData(data);
   };
 
   if (submitted) {
@@ -123,9 +123,7 @@ export default function LeadForm() {
         validationMode={currentValidationMode}
       />
 
-      <Button type="submit" disabled={Boolean(errors)}>
-        Submit
-      </Button>
+      <Button type="submit">Submit</Button>
     </Form>
   );
 }
