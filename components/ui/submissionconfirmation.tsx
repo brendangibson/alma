@@ -25,6 +25,8 @@ const Wrapper = styled.section`
   flex-direction: column;
   gap: 16px;
   align-items: center;
+  margin: 0 auto;
+  width: 50%;
 `;
 
 const CenteredImage = styled(Image)``;

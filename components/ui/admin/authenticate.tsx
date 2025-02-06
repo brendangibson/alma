@@ -10,12 +10,30 @@ import {
 
 const renderers = [...materialRenderers];
 
+const uischema = {
+  type: "VerticalLayout",
+  elements: [
+    {
+      type: "Control",
+      scope: "#/properties/username",
+    },
+    {
+      type: "Control",
+      scope: "#/properties/password",
+      options: {
+        format: "password",
+      },
+    },
+  ],
+};
+
 type Props = {
   onAuthentication: () => void;
 };
 
 const Authenticate = ({ onAuthentication }: Props) => (
   <Wrapper>
+    <h3>Login to Admin Pages</h3>
     <JsonForms
       schema={{
         type: "object",
@@ -30,6 +48,7 @@ const Authenticate = ({ onAuthentication }: Props) => (
           },
         },
       }}
+      uischema={uischema}
       renderers={renderers}
       cells={materialCells}
       data={{ username: "", password: "" }}

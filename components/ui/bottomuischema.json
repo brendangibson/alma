@@ -3,7 +3,10 @@
   "elements": [
     {
       "type": "Control",
-      "scope": "#/properties/message"
+      "scope": "#/properties/message",
+      "options": {
+        "multi": true
+      }
     }
   ]
 }

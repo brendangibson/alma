@@ -2,20 +2,17 @@
   "type": "object",
   "properties": {
     "firstName": {
-      "type": "string",
-      "minLength": 1
+      "type": "string"
     },
     "lastName": {
-      "type": "string",
-      "minLength": 1
+      "type": "string"
     },
     "email": {
       "type": "string",
-      "minLength": 1
+      "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
     },
     "linkedIn": {
-      "type": "string",
-      "minLength": 1
+      "type": "string"
     },
 
     "visas": {
@@ -27,9 +24,8 @@
       }
     },
     "message": {
-      "type": "string",
-      "minLength": 1
+      "type": "string"
     }
   },
-  "required": ["name"]
+  "required": ["firstName", "email", "visas"]
 }

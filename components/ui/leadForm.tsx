@@ -16,6 +16,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import styled from "styled-components";
 import SubmissionConfirmation from "./submissionconfirmation";
 import Button from "./button";
+import { ValidationMode } from "@jsonforms/core";
 
 export default function LeadForm() {
   const [data, setData] = useState<object>({
@@ -31,7 +32,8 @@ export default function LeadForm() {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
-
+  const [currentValidationMode, setValidationMode] =
+    useState<ValidationMode>("NoValidation");
   const [_, setFile] = useState<File | null>(null);
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
@@ -43,6 +45,11 @@ export default function LeadForm() {
 
   const handleConfirmationClose = () => {
     setSubmitted(false);
+  };
+
+  const handleChange = (data: object) => {
+    setValidationMode("ValidateAndShow");
+    setData(data);
   };
 
   if (submitted) {
@@ -71,7 +78,8 @@ export default function LeadForm() {
           data={data}
           renderers={renderers}
           cells={materialCells}
-          onChange={({ data }) => setData(data)}
+          onChange={handleChange}
+          validationMode={currentValidationMode}
         />
       </FormItems>
       <Description>
@@ -86,8 +94,19 @@ export default function LeadForm() {
         data={data}
         renderers={renderers}
         cells={materialCells}
-        onChange={({ data }) => setData(data)}
+        onChange={handleChange}
+        validationMode={currentValidationMode}
       />
+
+      <Resume>
+        Upload your Resumé / CV
+        <input
+          id="resume"
+          type="file"
+          onChange={(e) => setFile(e.target.files?.[0] || null)}
+        />
+      </Resume>
+
       <Description>
         <CenteredImage src="/heart.png" height={100} width={100} alt="info" />
 
@@ -100,14 +119,13 @@ export default function LeadForm() {
         data={data}
         renderers={renderers}
         cells={materialCells}
-        onChange={({ data }) => setData(data)}
-      />
-      <input
-        type="file"
-        onChange={(e) => setFile(e.target.files?.[0] || null)}
+        onChange={handleChange}
+        validationMode={currentValidationMode}
       />
 
-      <Button type="submit">Submit</Button>
+      <Button type="submit" disabled={Boolean(errors)}>
+        Submit
+      </Button>
     </Form>
   );
 }
@@ -135,4 +153,10 @@ const Description = styled.div`
   flex-direction: column;
   gap: var(--spacing-04);
   align-items: center;
+`;
+
+const Resume = styled.label`
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-05);
 `;

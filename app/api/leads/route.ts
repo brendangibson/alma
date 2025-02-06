@@ -1,3 +1,5 @@
+// API endpoint to get the leads
+
 import { NextResponse } from "next/server";
 import { subDays } from "date-fns";
 

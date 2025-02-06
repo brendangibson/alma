@@ -30,4 +30,5 @@ const Wrapper = styled.nav`
   display: flex;
   gap: var(--spacing-04);
   flex-direction: column;
+  padding-right: var(--spacing-05);
 `;

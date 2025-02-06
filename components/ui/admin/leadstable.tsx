@@ -33,16 +33,20 @@ const LeadsTable = () => {
         </tr>
       </thead>
       <tbody>
-        {leads?.map((lead) => (
+        {leads?.map((lead, index) => (
           <tr key={lead.id}>
-            <TD align="left">{lead.name}</TD>
-            <TD align="left">
+            <TD align="left" last={index === leads.length - 1}>
+              {lead.name}
+            </TD>
+            <TD align="left" last={index === leads.length - 1}>
               {format(lead.submitted, "dd/MM/yyyy, hh:mm a")}
             </TD>
-            <TD align="left">
+            <TD align="left" last={index === leads.length - 1}>
               <Button onClick={handleStatusClick(lead)}>{lead.status}</Button>
             </TD>
-            <TD align="left">{lead.country}</TD>
+            <TD align="left" last={index === leads.length - 1}>
+              {lead.country}
+            </TD>
           </tr>
         ))}
       </tbody>
@@ -60,11 +64,13 @@ const TH = styled.th`
   color: var(--color-grey);
   cursor: pointer;
   padding: var(--spacing-03);
+  border-bottom: 1px solid var(--color-grey);
 `;
 
-const TD = styled.td`
+const TD = styled.td<{ last?: boolean }>`
   padding: var(--spacing-03);
-  border-bottom: 1px solid var(--color-grey);
+  border-bottom: ${(props) =>
+    props.last ? "none" : "1px solid var(--color-grey)"};
 `;
 
 export default LeadsTable;
